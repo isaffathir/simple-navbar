@@ -1,0 +1,63 @@
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+<Home>:
+    MDBoxLayout:
+        orientation: 'vertical'
+        MyScreen:
+            id: myscr
+            transition: NoTransition()
+            MDScreen:
+                name: "home"
+                MDLabel:
+                    text: "Home Screen"
+                    halign: "center"
+
+        MyNavbar:
+            size_hint_y: .08
+            md_bg_color: 1,1,1,1
+            elevation: 2
+            MDGridLayout:
+                cols: 4
+                adaptive_width: True
+                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                spacing: 30
+                MDIconButton:
+                    id: btn1
+                    icon: "home"
+                    icon_size: dp(25)
+                    theme_text_color: "Custom"
+                    text_color: 1,0,0,1
+                    on_release:
+                        myscr.current = "home"
+                        root.navbar_click(self)
+                MDIconButton:
+                    id: btn2
+                    icon: "magnify"
+                    icon_size: dp(25)
+                    theme_text_color: "Custom"
+                    text_color: 0,0,0,1
+                    on_release:
+                        root.search_btn()
+                        myscr.current = "search"
+                        root.navbar_click(self)
+                MDIconButton:
+                    id: btn3
+                    icon: "music"
+                    icon_size: dp(25)
+                    theme_text_color: "Custom"
+                    text_color: 0,0,0,1
+                    on_release:
+                        root.music_btn()
+                        myscr.current = "music"
+                        root.navbar_click(self)
+                MDIconButton:
+                    id: btn4
+                    icon: "account"
+                    icon_size: dp(25)
+                    theme_text_color: "Custom"
+                    text_color: 0,0,0,1
+                    on_release:
+                        root.account_btn()
+                        myscr.current = "account"
+                        root.navbar_click(self)
+                
+
